@@ -1,12 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.css";
+import { Home } from "./pages/Home";
 import { EveryLatestExample } from "./pages/EveryLatestExample";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Home</div>,
+    element: <Home />,
   },
   {
     path: "/examples",
