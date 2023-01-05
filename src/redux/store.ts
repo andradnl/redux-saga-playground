@@ -3,8 +3,12 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 import saga from "./saga";
 import { userSlice } from "./userSlice";
+import { postsSlice } from "./postsSlice";
 
-const rootReducer = combineReducers({ users: userSlice.reducer });
+const rootReducer = combineReducers({
+  users: userSlice.reducer,
+  posts: postsSlice.reducer,
+});
 
 const sagaMiddleware = createSagaMiddleware();
 

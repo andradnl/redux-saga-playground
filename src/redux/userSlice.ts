@@ -20,18 +20,21 @@ export const userSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    fetchData: (state: UsersState) => {
+    fetchUsersData: (state: UsersState) => {
       state.loading = true;
     },
-    setFetchSuccess: (state, action) => {
+    setUsersSuccess: (state, action) => {
       state.loading = false;
       state.data = action.payload;
     },
-    setFetchError: (state) => {
+    setUsersError: (state) => {
       state.loading = false;
       state.error = true;
     },
   },
 });
 
-export const { fetchData, setFetchSuccess, setFetchError } = userSlice.actions;
+export const { fetchUsersData, setUsersSuccess, setUsersError } =
+  userSlice.actions;
+
+export const selectUsers = (state: any) => state;

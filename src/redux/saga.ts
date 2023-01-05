@@ -1,29 +1,38 @@
-import { takeEvery, put } from "redux-saga/effects";
+import { takeEvery, put, call, takeLatest } from "redux-saga/effects";
 
-// import { FETCH, FETCH_SUCCESS, FETCH_ERROR } from "./actions";
-import { fetchData, setFetchSuccess, setFetchError } from "./userSlice";
+import { fetchUsersData, setUsersSuccess, setUsersError } from "./userSlice";
+import { fetchPostsData, setPostsSuccess, setPostsError } from "./postsSlice";
+import { fetchUserData, fetchUserPosts } from "../api/requests";
 
-const FETCH_DATA_ACTION = fetchData.type;
-const FETCH_SUCCESS_ACTION = setFetchSuccess.type;
-const FETCH_ERROR_ACTION = setFetchError.type;
+const FETCH_USERS_ACTION = fetchUsersData.type;
+const FETCH_USERS_SUCCESS_ACTION = setUsersSuccess.type;
+const FETCH_USERS_ERROR_ACTION = setUsersError.type;
 
-const USERS_URL = "https://jsonplaceholder.typicode.com/users";
+const FETCH_POSTS_ACTION = fetchPostsData.type;
+const FETCH_POSTS_SUCCESS_ACTION = setPostsSuccess.type;
+const FETCH_POSTS_ERROR_ACTION = setPostsError.type;
 
-async function fetchUserData() {
-  const response = await fetch(USERS_URL).then((response) => response.json());
-  return response;
+function* getUsers() {
+  try {
+    const users: unknown[] = yield call(fetchUserData);
+    yield put({ type: FETCH_USERS_SUCCESS_ACTION, payload: users });
+  } catch (err: any) {
+    yield put({ type: FETCH_USERS_ERROR_ACTION, payload: err });
+    throw new Error(err);
+  }
 }
 
-function* fetchUsers() {
+function* getPosts() {
   try {
-    const users = fetchUserData();
-    yield put({ type: FETCH_SUCCESS_ACTION, payload: users });
+    const posts: unknown[] = yield call(fetchUserPosts);
+    yield put({ type: FETCH_POSTS_SUCCESS_ACTION, payload: posts });
   } catch (err: any) {
-    yield put({ type: FETCH_ERROR_ACTION, payload: err });
+    yield put({ type: FETCH_POSTS_ERROR_ACTION, payload: err });
     throw new Error(err);
   }
 }
 
 export default function* saga() {
-  yield takeEvery(FETCH_DATA_ACTION, fetchUsers);
+  yield takeEvery(FETCH_USERS_ACTION, getUsers);
+  yield takeLatest(FETCH_POSTS_ACTION, getPosts);
 }
