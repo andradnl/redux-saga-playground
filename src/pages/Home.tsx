@@ -57,15 +57,21 @@ export const Home = () => {
         pageToNavigate="/faq"
       />
       <HomeCard
-        title="Examples"
+        title="takeEvery vs. takeLatest"
         bgColor="salmon"
-        id="examples"
-        pageToNavigate="/examples"
+        id="take-every-take-latest"
+        pageToNavigate="/examples/every-latest"
       />
-      <HomeCard title="Contributors" bgColor="forestgreen" id="contributors" />
+      <HomeCard
+        title="take"
+        bgColor="skyblue"
+        id="take"
+        pageToNavigate="/examples/take"
+      />
       <HomeCard title="Placeholder 1" bgColor="crimson" id="p1" />
       <HomeCard title="Placeholder 2" bgColor="darkblue" id="p2" />
       <HomeCard title="Placeholder 3" bgColor="darkgrey" id="p3" />
+      <HomeCard title="Placeholder 4" bgColor="forestgreen" id="p4" />
     </div>
   );
 };
