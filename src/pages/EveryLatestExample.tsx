@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { select } from "redux-saga/effects";
 
 import { Card } from "../components/Card";
-import { fetchPostsData, selectPosts } from "../redux/postsSlice";
-import { fetchUsersData, selectUsers } from "../redux/userSlice";
+import { fetchPostsData, selectPosts } from "../redux/posts/slice";
+import { fetchUsersData, selectUsers } from "../redux/users/slice";
 
 export const EveryLatestExample = () => {
   const dispatch = useDispatch();

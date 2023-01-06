@@ -1,9 +1,9 @@
 import createSagaMiddleware from "redux-saga";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import saga from "./saga";
-import { userSlice } from "./userSlice";
-import { postsSlice } from "./postsSlice";
+import rootSaga from "./rootSaga";
+import { userSlice } from "./users/slice";
+import { postsSlice } from "./posts/slice";
 
 const rootReducer = combineReducers({
   users: userSlice.reducer,
@@ -18,6 +18,6 @@ const store = configureStore({
     getDefaultMiddleware().concat(sagaMiddleware),
 });
 
-sagaMiddleware.run(saga);
+sagaMiddleware.run(rootSaga);
 
 export default store;
