@@ -28,7 +28,7 @@ export const Card: React.FC<CardProps> = (props) => {
       >
         <p>{title}</p>
       </div>
-      <div>{children}</div>
+      <div style={{ padding: 8 }}>{children}</div>
     </div>
   );
 };

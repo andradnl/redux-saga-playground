@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import { Home } from "./pages/Home";
 import { EveryLatestExample } from "./pages/EveryLatestExample";
-import { TakeExample } from "./pages/TakeExamples";
+import { TakeLeadingExample } from "./pages/TakeLeadingExample";
 
 const router = createBrowserRouter([
   {
@@ -15,8 +15,8 @@ const router = createBrowserRouter([
     element: <EveryLatestExample />,
   },
   {
-    path: "/examples/take",
-    element: <TakeExample />,
+    path: "/examples/take-leading",
+    element: <TakeLeadingExample />,
   },
   { path: "faq", element: <div>FAQ</div> },
 ]);

@@ -8,7 +8,7 @@ interface HomeCardProps {
   pageToNavigate?: string;
 }
 
-const HomeCard = (props: HomeCardProps) => (
+export const HomeCard = (props: HomeCardProps) => (
   <Link
     to={props.pageToNavigate ?? ""}
     style={{
@@ -52,7 +52,7 @@ export const Home = () => {
     >
       <HomeCard
         title="Frequently Asked Questions"
-        bgColor="darkviolet"
+        bgColor="darkgrey"
         id="home"
         pageToNavigate="/faq"
       />
@@ -63,15 +63,15 @@ export const Home = () => {
         pageToNavigate="/examples/every-latest"
       />
       <HomeCard
-        title="take"
+        title="takeLeading"
         bgColor="skyblue"
         id="take"
-        pageToNavigate="/examples/take"
+        pageToNavigate="/examples/take-leading"
       />
-      <HomeCard title="Placeholder 1" bgColor="crimson" id="p1" />
-      <HomeCard title="Placeholder 2" bgColor="darkblue" id="p2" />
+      <HomeCard title="Placeholder 1" bgColor="darkgrey" id="p1" />
+      <HomeCard title="Placeholder 2" bgColor="darkgrey" id="p2" />
       <HomeCard title="Placeholder 3" bgColor="darkgrey" id="p3" />
-      <HomeCard title="Placeholder 4" bgColor="forestgreen" id="p4" />
+      <HomeCard title="Placeholder 4" bgColor="darkgrey" id="p4" />
     </div>
   );
 };

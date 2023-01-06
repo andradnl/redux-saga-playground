@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { select } from "redux-saga/effects";
 
 import { Card } from "../components/Card";
 import { fetchPostsData, selectPosts } from "../redux/posts/slice";
@@ -21,28 +20,28 @@ export const EveryLatestExample = () => {
     <div style={{ margin: "0 16px" }}>
       <h1>takeEvery vs. takeLatest</h1>
       <div style={{ display: "flex", width: "100%", gap: 16 }}>
-        <Card title="Example 1" titleBackground="lightblue">
+        <Card title="Take latest users" titleBackground="lightblue">
           <button onClick={() => dispatch(fetchUsersData())}>
             Fetch users
           </button>
           {usersLoading && <p>Users loading...</p>}
-          {users && (
+          {users.length > 0 && !usersLoading && (
             <ul>
-              {users.map((user: any) => (
-                <li>{user.name}</li>
+              {users.map(({ name }: any) => (
+                <li key={name}>{name}</li>
               ))}
             </ul>
           )}
         </Card>
-        <Card title="Example 2" titleBackground="lightgreen">
+        <Card title="Take every post" titleBackground="lightgreen">
           <button onClick={() => dispatch(fetchPostsData())}>
             Fetch posts
           </button>
           {postsLoading && <p>Posts loading</p>}
-          {posts && (
+          {posts.length > 0 && !postsLoading && (
             <ul>
-              {posts.map((post: any) => (
-                <li>{post.title}</li>
+              {posts.map(({ id, title }: any) => (
+                <li key={id}>{title}</li>
               ))}
             </ul>
           )}

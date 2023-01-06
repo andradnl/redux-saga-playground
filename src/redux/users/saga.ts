@@ -10,6 +10,7 @@ export function* getUsers() {
   try {
     const users: unknown[] = yield call(fetchUserData);
     yield put({ type: FETCH_USERS_SUCCESS_ACTION, payload: users });
+    console.log("Store has been updated with users");
   } catch (err: any) {
     yield put({ type: FETCH_USERS_ERROR_ACTION, payload: err });
     throw new Error(err);

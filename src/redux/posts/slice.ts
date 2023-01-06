@@ -1,4 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {
+  Action,
+  ActionCreatorWithPayload,
+  createSlice,
+} from "@reduxjs/toolkit";
 
 interface Post {
   userId: string;
@@ -11,12 +15,14 @@ interface PostsState {
   loading: boolean;
   error: boolean;
   data: Post[];
+  selectedPost: Post;
 }
 
 const initialState: PostsState = {
   loading: false,
   error: false,
   data: [],
+  selectedPost: { id: "", userId: "", title: "", body: "" },
 };
 
 export const postsSlice = createSlice({
@@ -26,18 +32,29 @@ export const postsSlice = createSlice({
     fetchPostsData: (state: PostsState) => {
       state.loading = true;
     },
-    setPostsSuccess: (state, action) => {
+    setPostsSuccess: (state: PostsState, action) => {
       state.loading = false;
       state.data = action.payload;
     },
-    setPostsError: (state) => {
+    setPostsError: (state: PostsState) => {
       state.loading = false;
       state.error = true;
+    },
+    getPost: (state: PostsState, action) => {
+      state.selectedPost.id = action.payload;
+    },
+    setSelectedPostSuccess: (state, action) => {
+      state.selectedPost = action.payload;
     },
   },
 });
 
-export const { fetchPostsData, setPostsSuccess, setPostsError } =
-  postsSlice.actions;
+export const {
+  fetchPostsData,
+  setPostsSuccess,
+  setPostsError,
+  getPost,
+  setSelectedPostSuccess,
+} = postsSlice.actions;
 
 export const selectPosts = (state: any) => state;
