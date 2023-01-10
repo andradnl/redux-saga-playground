@@ -4,6 +4,7 @@ import "./App.css";
 import { Home } from "./pages/Home";
 import { EveryLatestExample } from "./pages/EveryLatestExample";
 import { TakeLeadingExample } from "./pages/TakeLeadingExample";
+import { ForkExample } from "./pages/ForkExample";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
     element: <TakeLeadingExample />,
   },
   { path: "faq", element: <div>FAQ</div> },
+  { path: "/examples/fork", element: <ForkExample /> },
 ]);
 
 function App() {

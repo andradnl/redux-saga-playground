@@ -68,7 +68,12 @@ export const Home = () => {
         id="take"
         pageToNavigate="/examples/take-leading"
       />
-      <HomeCard title="Placeholder 1" bgColor="darkgrey" id="p1" />
+      <HomeCard
+        title="fork"
+        bgColor="forestgreen"
+        id="fork"
+        pageToNavigate="/examples/fork"
+      />
       <HomeCard title="Placeholder 2" bgColor="darkgrey" id="p2" />
       <HomeCard title="Placeholder 3" bgColor="darkgrey" id="p3" />
       <HomeCard title="Placeholder 4" bgColor="darkgrey" id="p4" />

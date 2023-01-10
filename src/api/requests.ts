@@ -13,3 +13,15 @@ export async function fetchPost(id: string) {
     response.json()
   );
 }
+
+type Resource = "users" | "posts" | string;
+
+export async function fetchResource(
+  resource: Resource,
+  params?: Record<string, string>
+) {
+  const additionalUrlParams = params?.id ? `/${params?.id}` : "";
+  const url = `${API_URL}/${resource}${additionalUrlParams}`;
+
+  return await fetch(url).then((response) => response.json());
+}
