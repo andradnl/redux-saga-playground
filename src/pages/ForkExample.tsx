@@ -17,7 +17,7 @@ export const ForkExample = () => {
     <div>
       <h1>Fork example</h1>
       {loading && <p>Saga is being executed</p>}
-      {error && <p>An error has occurred</p>}
+      {error && <p>{error}</p>}
       {success && <p>Saga has finished successfully</p>}
     </div>
   );
