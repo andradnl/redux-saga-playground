@@ -18,19 +18,25 @@ export const forkSlice = createSlice({
   reducers: {
     setLoading: (state: ForksState) => {
       state.loading = true;
+      state.success = false;
+      state.error = "";
     },
     setError: (state: ForksState, action) => {
       state.loading = false;
       state.error = action.payload;
+      state.success = false;
     },
     setSuccess: (state: ForksState, action) => {
       state.loading = false;
       state.success = true;
+      state.error = "";
     },
     runFork: () => {},
+    runFailingFork: () => {},
   },
 });
 
-export const { setLoading, setError, setSuccess, runFork } = forkSlice.actions;
+export const { setLoading, setError, setSuccess, runFork, runFailingFork } =
+  forkSlice.actions;
 
 export const selectFork = (state: any) => state;
