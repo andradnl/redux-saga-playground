@@ -2,33 +2,17 @@ import * as React from "react";
 
 interface CardProps {
   title: string;
-  titleBackground: string;
   children: React.ReactNode;
 }
 
 export const Card: React.FC<CardProps> = (props) => {
-  const { title, titleBackground, children } = props;
+  const { title, children } = props;
   return (
-    <div
-      style={{
-        borderRadius: 8,
-        border: "1px solid lightgrey",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100%",
-      }}
-    >
-      <div
-        style={{
-          width: "100%",
-          borderRadius: "6px 6px 0 0",
-          background: titleBackground,
-        }}
-      >
-        <p>{title}</p>
+    <div className="card-large">
+      <div className="card-large-title">
+        <h2>{title}</h2>
       </div>
-      <div style={{ padding: 8 }}>{children}</div>
+      <div className="card-large-content">{children}</div>
     </div>
   );
 };

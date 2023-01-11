@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     path: "/examples/take-leading",
     element: <TakeLeadingExample />,
   },
-  { path: "faq", element: <div>FAQ</div> },
+  { path: "faq", element: <h1>FAQ</h1> },
   { path: "/examples/fork", element: <ForkExample /> },
 ]);
 

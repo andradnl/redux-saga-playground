@@ -2,6 +2,7 @@ import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Card } from "../components/Card";
+import { Button } from "../components/Button";
 import { fetchPostsData, selectPosts } from "../redux/posts/slice";
 import { fetchUsersData, selectUsers } from "../redux/users/slice";
 
@@ -17,13 +18,15 @@ export const EveryLatestExample = () => {
   } = useSelector(selectPosts);
 
   return (
-    <div style={{ margin: "0 16px" }}>
+    <div className="page-container">
       <h1>takeEvery vs. takeLatest</h1>
-      <div style={{ display: "flex", width: "100%", gap: 16 }}>
-        <Card title="Take latest users" titleBackground="lightblue">
-          <button onClick={() => dispatch(fetchUsersData())}>
-            Fetch users
-          </button>
+      <div style={{ display: "flex", width: "100%" }}>
+        <Card title="takeLatest users">
+          <Button
+            onClick={() => dispatch(fetchUsersData())}
+            label="Fetch users"
+          />
+
           {usersLoading && <p>Users loading...</p>}
           {users.length > 0 && !usersLoading && (
             <ul>
@@ -33,10 +36,11 @@ export const EveryLatestExample = () => {
             </ul>
           )}
         </Card>
-        <Card title="Take every post" titleBackground="lightgreen">
-          <button onClick={() => dispatch(fetchPostsData())}>
-            Fetch posts
-          </button>
+        <Card title="takeEvery post">
+          <Button
+            onClick={() => dispatch(fetchPostsData())}
+            label="Fetch posts"
+          />
           {postsLoading && <p>Posts loading</p>}
           {posts.length > 0 && !postsLoading && (
             <ul>

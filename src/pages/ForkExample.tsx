@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { Button } from "../components/Button";
 import { selectFork, runFork, runFailingFork } from "../redux/fork/slice";
 
 export const ForkExample = () => {
@@ -11,14 +12,18 @@ export const ForkExample = () => {
   } = useSelector(selectFork);
 
   return (
-    <div>
+    <div className="page-container">
       <h1>Fork example</h1>
-      <button onClick={() => dispatch(runFork())}>
-        Initiate successful example
-      </button>
-      <button onClick={() => dispatch(runFailingFork())}>
-        Initiate failing example
-      </button>
+      <div style={{ display: "flex", width: "100%", gap: 16 }}>
+        <Button
+          onClick={() => dispatch(runFork())}
+          label="Initiate successful example"
+        />
+        <Button
+          onClick={() => dispatch(runFailingFork())}
+          label="Initiate failing example"
+        />
+      </div>
       {loading && <p>Saga is being executed</p>}
       {error && <p>{error}</p>}
       {success && <p>Saga has finished successfully</p>}

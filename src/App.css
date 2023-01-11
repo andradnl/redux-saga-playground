@@ -1,7 +1,91 @@
-body {
-  margin: 0
+:root {
+  --color-blue-light: cornflowerblue;
+  --color-blue-dark: rgb(69, 127, 236);
+  --color-purple-light: rgb(95, 75, 102);
+  --color-purple-dark: rgb(44, 19, 32);
+  --color-grey-light: rgb(238, 241, 239);
+  --color-grey-dark: rgb(186, 179, 189);
 }
+
+a {
+  text-decoration: none;
+  color: var(--color-purple-light);
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-grey-light);
+}
+
 .app {
   text-align: center;
-  width: 100vw;
+  padding: 32px;
+  color: var(--color-purple-dark);
+}
+
+.button {
+  border-radius: 16px;
+  padding: 8px 24px;
+  background-color: var(--color-blue-light);
+  border: none;
+  color: var(--color-grey-light);
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--color-blue-dark);
+}
+
+.page-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 100%;
+}
+
+.card-small {
+  color: var(--color-grey-light);
+  background-color: var(--color-purple-light);
+  width: 150px;
+  height: 150px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.card-small:hover {
+  background-color: var(--color-purple-dark);
+  transition: 0.2s background-color ease-in-out;
+}
+
+.card-small > span {
+  font-weight: 700;
+  text-align: right;
+}
+
+.card-large {
+  border-radius: 8px;
+  border: 1px solid lightgrey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.card-large-title {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+  background-color: var(--color-purple-light);
+  color: var(--color-grey-light);
+  font-weight: 600;
+}
+
+.card-large-content {
+  padding: 16px;
+  width: 100%;
 }
