@@ -53,4 +53,4 @@ export const {
   setSelectedPostSuccess,
 } = postsSlice.actions;
 
-export const selectPosts = (state: any) => state;
+export const selectPosts = (state: any) => state.posts;

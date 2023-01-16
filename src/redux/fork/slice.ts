@@ -39,4 +39,4 @@ export const forkSlice = createSlice({
 export const { setLoading, setError, setSuccess, runFork, runFailingFork } =
   forkSlice.actions;
 
-export const selectFork = (state: any) => state;
+export const selectFork = (state: any) => state.fork;

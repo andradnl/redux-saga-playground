@@ -10,13 +10,9 @@ import { NavigationBar } from "../components/NavigationBar";
 export const EveryLatestExample = () => {
   const dispatch = useDispatch();
 
-  const {
-    users: { data: users, loading: usersLoading },
-  } = useSelector(selectUsers);
+  const { data: users, loading: usersLoading } = useSelector(selectUsers);
 
-  const {
-    posts: { data: posts, loading: postsLoading },
-  } = useSelector(selectPosts);
+  const { data: posts, loading: postsLoading } = useSelector(selectPosts);
 
   return (
     <>

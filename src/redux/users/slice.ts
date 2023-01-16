@@ -37,4 +37,4 @@ export const userSlice = createSlice({
 export const { fetchUsersData, setUsersSuccess, setUsersError } =
   userSlice.actions;
 
-export const selectUsers = (state: any) => state;
+export const selectUsers = (state: any) => state.users;

@@ -42,9 +42,7 @@ const Card = ({ bgColor, id, body }: CardProps) => {
 };
 
 export const TakeLeadingExample = () => {
-  const {
-    posts: { selectedPost },
-  } = useSelector(selectPosts);
+  const { selectedPost } = useSelector(selectPosts);
 
   const getBody = (id: number) =>
     selectedPost.id === id

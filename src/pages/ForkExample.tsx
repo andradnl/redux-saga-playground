@@ -8,9 +8,7 @@ import { selectFork, runFork, runFailingFork } from "../redux/fork/slice";
 export const ForkExample = () => {
   const dispatch = useDispatch();
 
-  const {
-    fork: { loading, error, success },
-  } = useSelector(selectFork);
+  const { loading, error, success } = useSelector(selectFork);
 
   return (
     <>
