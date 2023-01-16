@@ -4,8 +4,8 @@ import "./App.css";
 import { Home } from "./pages/Home";
 import { EveryLatestExample } from "./pages/EveryLatestExample";
 import { TakeLeadingExample } from "./pages/TakeLeadingExample";
+import { FAQs } from "./pages/FAQs";
 import { ForkExample } from "./pages/ForkExample";
-import { NavigationBar } from "./components/NavigationBar";
 
 const router = createBrowserRouter([
   {
@@ -22,12 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: "faq",
-    element: (
-      <div>
-        <NavigationBar />
-        <h1>FAQ</h1>
-      </div>
-    ),
+    element: <FAQs />,
   },
   { path: "/examples/fork", element: <ForkExample /> },
 ]);
