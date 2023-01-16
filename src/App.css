@@ -23,6 +23,14 @@ body {
   color: var(--color-purple-dark);
 }
 
+.navigation {
+  display: flex;
+  gap: 16px;
+  background-color: var(--color-blue-light);
+  padding: 16px;
+  margin: -32px -32px 0;
+}
+
 .button {
   border-radius: 16px;
   padding: 8px 24px;
@@ -45,6 +53,11 @@ body {
   width: 100%;
 }
 
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+
 .card-small {
   color: var(--color-grey-light);
   background-color: var(--color-purple-light);
@@ -58,7 +71,8 @@ body {
   cursor: pointer;
 }
 
-.card-small:hover {
+.card-small:hover,
+.card-small-active {
   background-color: var(--color-purple-dark);
   transition: 0.2s background-color ease-in-out;
 }

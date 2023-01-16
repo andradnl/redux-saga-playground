@@ -1,32 +1,12 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 
-interface HomeCardProps {
-  title: string;
-  pageToNavigate?: string;
-}
-
-export const HomeCard = ({ pageToNavigate, title }: HomeCardProps) => (
-  <Link to={pageToNavigate ?? ""}>
-    <div className="card-small">
-      <span>{title}</span>
-    </div>
-  </Link>
-);
-
-const cards = [
-  { title: "Frequently Asked Questions", page: "/faq" },
-  { title: "takeEvery vs. takeLatest", page: "/examples/every-latest" },
-  { title: "takeLeading", page: "/examples/take-leading" },
-  { title: "fork", page: "/examples/fork" },
-];
+import { NavigationBar } from "../components/NavigationBar";
 
 export const Home = () => {
   return (
-    <div className="page-container">
-      {cards.map(({ title, page }) => (
-        <HomeCard title={title} pageToNavigate={page} />
-      ))}
+    <div className="home-page">
+      <NavigationBar />
+      <h1>Redux Saga playground</h1>
     </div>
   );
 };

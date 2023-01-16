@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavigationBar } from "../components/NavigationBar";
 
 import { getPost, selectPosts } from "../redux/posts/slice";
 
@@ -51,17 +52,23 @@ export const TakeLeadingExample = () => {
       : `Post ${id}`;
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
-      {[1, 2, 3, 4].map((id: number) => {
-        const isSelected = selectedPost.id === id;
-        return (
-          <Card
-            bgColor={isSelected ? "forestgreen" : "darkgrey"}
-            id={`${id}`}
-            body={getBody(id)}
-          />
-        );
-      })}
-    </div>
+    <>
+      <NavigationBar />
+      <div
+        style={{ display: "flex", flexWrap: "wrap", gap: 16, marginTop: 16 }}
+      >
+        <h1>takeLeading</h1>
+        {[1, 2, 3, 4].map((id: number) => {
+          const isSelected = selectedPost.id === id;
+          return (
+            <Card
+              bgColor={isSelected ? "forestgreen" : "darkgrey"}
+              id={`${id}`}
+              body={getBody(id)}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 };
