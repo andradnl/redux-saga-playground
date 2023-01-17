@@ -60,6 +60,7 @@ export const TakeLeadingExample = () => {
           const isSelected = selectedPost.id === id;
           return (
             <Card
+              key={id}
               bgColor={isSelected ? "forestgreen" : "darkgrey"}
               id={`${id}`}
               body={getBody(id)}
