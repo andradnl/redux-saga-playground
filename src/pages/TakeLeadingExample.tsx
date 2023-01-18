@@ -32,14 +32,7 @@ export const TakeLeadingExample = () => {
           marginTop: 16,
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "space-between",
-            padding: "16px 0",
-          }}
-        >
+        <div className="title-section">
           <h1>takeLeading</h1>
           <Button
             label={`${showObservations ? "Hide" : "Show"} observations`}
@@ -64,14 +57,7 @@ export const TakeLeadingExample = () => {
 };
 
 const ObservationsSection = () => (
-  <div
-    style={{
-      borderRadius: 8,
-      border: "1px solid lightgrey",
-      width: "100%",
-      padding: 16,
-    }}
-  >
+  <div className="observations">
     <p>
       We can dispatch multiple actions of the same type (or different) in rapid
       succession, but the saga that fetches data execute only in response to the

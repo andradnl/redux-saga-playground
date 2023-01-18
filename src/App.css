@@ -32,7 +32,8 @@ h6 {
   margin-block: 0;
 }
 
-li, p {
+li,
+p {
   text-align: left;
 }
 
@@ -77,6 +78,26 @@ h6 {
 .home-page {
   display: flex;
   flex-direction: column;
+}
+
+.title-section {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 0;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+}
+
+.observations {
+  border-radius: 8px;
+  border: 1px solid lightgrey;
+  width: 100%;
+  padding: 16px;
 }
 
 .card-small {

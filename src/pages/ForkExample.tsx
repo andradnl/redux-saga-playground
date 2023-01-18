@@ -17,14 +17,7 @@ export const ForkExample = () => {
       <div
         style={{ display: "flex", flexWrap: "wrap", gap: 16, marginTop: 16 }}
       >
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "space-between",
-            padding: "16px 0",
-          }}
-        >
+        <div className="title-section">
           <h1>Fork example</h1>
           <Button
             label={`${showObservations ? "Hide" : "Show"} observations`}
@@ -32,7 +25,7 @@ export const ForkExample = () => {
           />
         </div>
         {showObservations && <ObservationsSection />}
-        <div style={{ display: "flex", width: "100%", gap: 16 }}>
+        <div className="content">
           <Button
             onClick={() => dispatch(runFork())}
             label="Initiate successful example"
@@ -51,14 +44,7 @@ export const ForkExample = () => {
 };
 
 const ObservationsSection = () => (
-  <div
-    style={{
-      borderRadius: 8,
-      border: "1px solid lightgrey",
-      width: "100%",
-      padding: 16,
-    }}
-  >
+  <div className="observations">
     <p>
       In the first example, the saga successfully finishes its execution. It
       waits for each of its 3 forked tasks to finish, before completing its own

@@ -14,14 +14,7 @@ export const EveryLatestExample = () => {
     <>
       <NavigationBar />
       <div className="page-container">
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "space-between",
-            padding: "16px 0",
-          }}
-        >
+        <div className="title-section">
           <h1>takeLatest vs. takeEvery</h1>
           <Button
             label={`${showObservations ? "Hide" : "Show"} observations`}
@@ -29,7 +22,7 @@ export const EveryLatestExample = () => {
           />
         </div>
         {showObservations && <ObservationsSection />}
-        <div style={{ display: "flex", width: "100%", gap: 16 }}>
+        <div className="content">
           <UsersCard />
           <PostsCard />
         </div>
@@ -39,14 +32,7 @@ export const EveryLatestExample = () => {
 };
 
 const ObservationsSection = () => (
-  <div
-    style={{
-      borderRadius: 8,
-      border: "1px solid lightgrey",
-      width: "100%",
-      padding: 16,
-    }}
-  >
+  <div className="observations">
     <p>When clicking the Fetch button multiple times in rapid succession:</p>
     <ul>
       <li>
