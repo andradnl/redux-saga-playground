@@ -28,30 +28,7 @@ export const EveryLatestExample = () => {
             onClick={() => setShowObservations(!showObservations)}
           />
         </div>
-        {showObservations && (
-          <div
-            style={{
-              borderRadius: 8,
-              border: "1px solid lightgrey",
-              width: "100%",
-              padding: 16,
-            }}
-          >
-            <p>
-              When clicking the Fetch button multiple times in rapid succession:
-              <ul>
-                <li>
-                  The UI is populated with user data retrieved by the last
-                  request made with takeLatest
-                </li>
-                <li>
-                  The UI is populated with posts data retrieved by the first
-                  request made with takeEvery
-                </li>
-              </ul>
-            </p>
-          </div>
-        )}
+        {showObservations && <ObservationsSection />}
         <div style={{ display: "flex", width: "100%", gap: 16 }}>
           <UsersCard />
           <PostsCard />
@@ -60,6 +37,29 @@ export const EveryLatestExample = () => {
     </>
   );
 };
+
+const ObservationsSection = () => (
+  <div
+    style={{
+      borderRadius: 8,
+      border: "1px solid lightgrey",
+      width: "100%",
+      padding: 16,
+    }}
+  >
+    <p>When clicking the Fetch button multiple times in rapid succession:</p>
+    <ul>
+      <li>
+        The UI is populated with user data retrieved by the last request made
+        with takeLatest
+      </li>
+      <li>
+        The UI is populated with posts data retrieved by the first request made
+        with takeEvery
+      </li>
+    </ul>
+  </div>
+);
 
 const UsersCard = () => {
   const dispatch = useDispatch();
