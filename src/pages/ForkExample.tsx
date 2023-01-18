@@ -8,7 +8,7 @@ import { selectFork, runFork, runFailingFork } from "../redux/fork/slice";
 export const ForkExample = () => {
   const dispatch = useDispatch();
   const { loading, error, success } = useSelector(selectFork);
-
+  const status = getStatus(loading, success, error);
   const [showObservations, setShowObservations] = React.useState(false);
 
   return (
@@ -34,10 +34,12 @@ export const ForkExample = () => {
             onClick={() => dispatch(runFailingFork())}
             label="Initiate failing example"
           />
+          {status && (
+            <p style={{ marginBlock: 0, alignSelf: "center" }}>
+              Execution status: {status}
+            </p>
+          )}
         </div>
-        {loading && <p>Saga is being executed</p>}
-        {error && <p>{error}</p>}
-        {success && <p>Saga has finished successfully</p>}
       </div>
     </>
   );
@@ -60,3 +62,9 @@ const ObservationsSection = () => (
     </p>
   </div>
 );
+
+function getStatus(loading: boolean, success: boolean, error: string): string {
+  if (loading) return "Saga is being executed";
+  if (success) return "Saga has finished successfully";
+  return error;
+}
