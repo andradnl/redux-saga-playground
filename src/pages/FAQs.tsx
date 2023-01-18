@@ -21,7 +21,7 @@ interface ItemProps {
 
 const Item = ({ question, answer, handleUpdate, handleDelete }: ItemProps) => (
   <div className="faq-item">
-    <div>
+    <div className="faq-item-content">
       <h5>{question}</h5>
       <h6>{answer}</h6>
     </div>
