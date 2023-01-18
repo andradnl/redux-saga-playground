@@ -9,38 +9,28 @@ import {
   FAQ,
   addFaq,
   deleteFaq,
-  updateFaq,
+  // updateFaq,
 } from "../redux/faq/slice";
 
 interface ItemProps {
   question: string;
   answer: string;
-  id: string;
   handleUpdate: () => void;
   handleDelete: () => void;
 }
 
-const Item = ({
-  question,
-  answer,
-  id,
-  handleUpdate,
-  handleDelete,
-}: ItemProps) => {
-  return (
-    <div className="faq-item">
-      <div>
-        <h5>{question}</h5>
-        <h6>{answer}</h6>
-        <h6>ID: {id}</h6>
-      </div>
-      <div style={{ display: "flex", gap: 16 }}>
-        <Button label="📝" onClick={handleUpdate} />
-        <Button label="❌" onClick={handleDelete} />
-      </div>
+const Item = ({ question, answer, handleUpdate, handleDelete }: ItemProps) => (
+  <div className="faq-item">
+    <div>
+      <h5>{question}</h5>
+      <h6>{answer}</h6>
     </div>
-  );
-};
+    <div className="faq-item-buttons">
+      <Button label="📝" onClick={handleUpdate} />
+      <Button label="❌" onClick={handleDelete} />
+    </div>
+  </div>
+);
 
 export const FAQs = () => {
   const { faqs } = useSelector(selectFaq);
@@ -77,20 +67,15 @@ export const FAQs = () => {
         <Button label="Add" onClick={handleAdd} />
       </div>
       <div className="faq-list">
-        {faqs.map((faq: FAQ) => {
-          return (
-            <Item
-              handleUpdate={() =>
-                handleUpdate({ id: faq.id, question, answer })
-              }
-              handleDelete={() => handleDelete(faq.id)}
-              key={faq.id}
-              id={faq.id}
-              question={faq.question}
-              answer={faq.answer}
-            />
-          );
-        })}
+        {faqs.map((faq: FAQ) => (
+          <Item
+            key={faq.id}
+            handleUpdate={() => handleUpdate({ id: faq.id, question, answer })}
+            handleDelete={() => handleDelete(faq.id)}
+            question={faq.question}
+            answer={faq.answer}
+          />
+        ))}
       </div>
     </div>
   );
