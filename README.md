@@ -5,8 +5,32 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Context 🚧
 
 # Q&A - 🚧 section under construction 🚧
+1. What is Redux? <br>
+*Redux is a state management library for JavaScript applications, with a large ecosystem of addons, such as Redux Toolkit, which helps jumpstart the creation of a Redux app. The core concepts of Redux are `store`, `actions` and `reducers`.*
+1. What is a Redux store? <br>
+*The store is an object that holds the global state of a Redux application, acting as the single source of truth. A Redux application can have only one store, but be composed of multiple reducers.*
+1. What is a reducer? <br>
+*A reducer is pure function that can reduce a collection of values to a single value. In the context of Redux, the single accumulated value returned by a reducer represents the new state object, calculated based on previous state and an action.*
+1. What are Redux actions? <br>
+*An action is an object with a `type` property and a `payload` property, which represents the intention of updating the global state of the application. There is no other way to update a Redux store other than dispatching actions to it. The payload of an action represents the piece of the state that need to be updated by a given reducer function.*
 1. What is Redux Saga? <br>
-    *Redux Saga is a JS library built on top of Redux, which handles asynchronous operations like data fetching.*
+*Redux Saga is a JavaScript library built on top of Redux, which acts as a middleware for handling asynchronous operations such as data fetching.*
+1. What is a middleware? <br>
+*A middleware is a piece of code that can run after an action has been dispatched, but before it is processed by a reducer. Chronologically, this would be the order in which these steps are executed:* <br><br>
+    ```
+    action dispatch ⇨ middleware ⇨ reducer processes the action ⇨ store updates
+    ```
+    *In the context of Redux, a middleware is a higher order function that enhances the `dispatch` function to provide it with new capabilities. This becomes the main way of handling asynchronous behaviour such as data fetching. A dispatched action can be "caught" by the middleware and in response the middleware can orchestrate a data fetching operation, whose response will then be used to update the store by dispatching another action.*
+1. What alternatives are there to using Redux Saga? <br>
+*In the Redux ecosystem, an alternative to using Redux Saga is Redux Thunk.*
+1. What are some differences between using Redux Saga and Redux Thunk? <br>
+*- Nowadays, Redux Toolkit has Redux Thunk as the default (and recommended) middleware option for handling side effects and both synchronous and asynchronous logic that requires access to the Redux store. The "thunk" pattern can be defined as a piece of code that does some delayed work. In the context of Redux Thunk, thunks represent a way of writing functions whose logic can interact with a Redux store, specifically its `dispatch` and `getState` methods. A thunk function accepts these two methods as arguments:* <br><br>
+    ```javascript
+    const thunkFunction = (dispatch, getState) => {...}
+    ```
+    *TO be continued*
+1. What is a side effect? <br>
+*A side effect represents a change that can be observed outside the execution context of a given function. It is often defined in relation to pure functions, which are functions that return the same output every time they are invoked and don't cause side effects. These side effects can be anything from making an HTTP request, generating a random value, mutating values, logging values to the console or any other asynchronous operations.`*
 1. What are Redux Saga effects? <br>
     *Effects or effect creators are functions you can execute as part of a Redux Saga control flow, which return plain JavaScript objects and trigger side effects. They do not perform any action, but instead instruct the middleware how to execute a given action.*
 1. What are declarative effects? <br>
@@ -29,7 +53,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 *`take` can be called with no arguments or `*`, in which case all dispatched actions will be matched. Take can also be called with a function, a string or an array.*
 1. What is the `END` action? <br>
 *The `END` action is a special action provided by the middleware, which when dispatched, terminates all sagas blocked on a `take` effect. If a saga was terminated this way but it still had some forked tasks still running, it would wait for all its child tasks to terminate.*
-1. How does takeMaybe work? <br>
+1. How does `takeMaybe` work? <br>
 *`takeMaybe` functions the same as `take`, but it does not automatically terminate the saga on an `END` action.*
 1. How do `take` and `takeMaybe` work when called with a channel? <br>
 *`take` and `takeMaybe` work the same when called with a channel as they do when called with a pattern. The difference is in what the middleware is instructed to wait for. When called with a pattern, the middleware waits for specific actions. When called with a channel, the middleware waits for a specified message from the provided channel. If that channel is already closed, the generator will terminate immediately, following the same process described above.*
@@ -51,15 +75,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 *`apply` is an alias for `call`.*
 1. What is the forking model in Redux Saga? <br>
 *The forking model represents the two possible ways of dynamically instantiating sagas that can run in parallel: attached and detached. Attached forks use the `fork` effect creator, and remain attached to their parents. Furthermore, attached forks share the same semantics with the parallel effect (`all`), in the sense that the parent will terminate after all launched tasks finish their execution. Detached forks use the `spawn` effect creator and live in their own execution context, not attached to their parents.*
-1. What is `fork` and how does it work? <br>
-*`fork` is an effect creator that creates an effect which instructs the middleware to invoke a given (normal or generator) function in a non-blocking manner. The generator resumes as soon as the given function is invoked. Fork is relevant in the management of concurrency between different sagas. Yielding a `fork` effect creator returns a `task` object attached to its parent, whose termination the parent will wait for, even after its own body of instructions has finished executing.*
+1. How does `fork` work? <br>
+*`fork` instructs the middleware to invoke a given (normal or generator) function in a non-blocking manner. The generator resumes as soon as the given function is invoked. Fork is relevant in the management of concurrency between different sagas. Yielding a `fork` effect creator returns a `task` object attached to its parent. The parent will wait for the termination of the forked task(s), even after its own body of instructions has finished executing.*
 1. What is the difference between `call` and `fork`? <br>
 *`call` is blocking, `fork` is non-blocking.*
 1. How does error propagation work with forked tasks? <br>
 *Errors from child tasks automatically bubble up to their parents. If any forked task raises an uncaught error, then the parent task will abort with the child `Error`, and the whole parent's execution tree (both forked tasks and main task if it's still running) will be cancelled.*
-1. What is `spawn` and how does it work? <br>
-*`spawn` is an effect creator that creates a detached forked task. A detached task and its parent are completely independent.*
-1. What is `join` and how does it work? <br>
-*`join` is an effect creator that creates an effect which instructs the middleware to wait for the result of a previously forked task. It will resolve with the same outcome as the joined task.*
-1. What is `cancel` and how does it work? <br>
-*`cancel` creates an effect description that instructs the middleware to cancel a previously forked task.*
+1. How does `spawn` work? <br>
+*`spawn` creates a detached forked task, whose execution is completely independent from the parent saga that spawned it.*
+1. How `join` it work? <br>
+*`join` instructs the middleware to wait for the result of a previously forked task. It will resolve with the same outcome as the joined task.*
+1. How does `cancel` work? <br>
+*`cancel` instructs the middleware to cancel a previously forked task.*
+1. How does `select` work? <br>
+*`select` instructs the middleware to invoke a given selector function on the current state of the store, in order to retrieve a value from it.
