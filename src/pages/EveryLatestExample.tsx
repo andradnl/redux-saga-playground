@@ -3,54 +3,59 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Card } from "../components/Card";
 import { Button } from "../components/Button";
+import { NavigationBar } from "../components/NavigationBar";
 import { fetchPostsData, selectPosts } from "../redux/posts/slice";
 import { fetchUsersData, selectUsers } from "../redux/users/slice";
-import { NavigationBar } from "../components/NavigationBar";
 
 export const EveryLatestExample = () => {
-  const dispatch = useDispatch();
-
-  const { data: users, loading: usersLoading } = useSelector(selectUsers);
-
-  const { data: posts, loading: postsLoading } = useSelector(selectPosts);
-
   return (
     <>
       <NavigationBar />
       <div className="page-container">
         <h1>takeEvery vs. takeLatest</h1>
-        <div style={{ display: "flex", width: "100%" }}>
-          <Card title="takeLatest users">
-            <Button
-              onClick={() => dispatch(fetchUsersData())}
-              label="Fetch users"
-            />
-
-            {usersLoading && <p>Users loading...</p>}
-            {users.length > 0 && !usersLoading && (
-              <ul>
-                {users.map(({ name }: any) => (
-                  <li key={name}>{name}</li>
-                ))}
-              </ul>
-            )}
-          </Card>
-          <Card title="takeEvery post">
-            <Button
-              onClick={() => dispatch(fetchPostsData())}
-              label="Fetch posts"
-            />
-            {postsLoading && <p>Posts loading</p>}
-            {posts.length > 0 && !postsLoading && (
-              <ul>
-                {posts.map(({ id, title }: any) => (
-                  <li key={id}>{title}</li>
-                ))}
-              </ul>
-            )}
-          </Card>
+        <div style={{ display: "flex", width: "100%", gap: 16 }}>
+          <UsersCard />
+          <PostsCard />
         </div>
       </div>
     </>
+  );
+};
+
+const UsersCard = () => {
+  const dispatch = useDispatch();
+  const { data, loading } = useSelector(selectUsers);
+
+  return (
+    <Card title="takeLatest users">
+      <Button onClick={() => dispatch(fetchUsersData())} label="Fetch users" />
+      {loading && <p>Users loading...</p>}
+      {data.length > 0 && !loading && (
+        <ul>
+          {data.map(({ name }: any) => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
+      )}
+    </Card>
+  );
+};
+
+const PostsCard = () => {
+  const dispatch = useDispatch();
+  const { data, loading } = useSelector(selectPosts);
+
+  return (
+    <Card title="takeEvery post">
+      <Button onClick={() => dispatch(fetchPostsData())} label="Fetch posts" />
+      {loading && <p>Posts loading</p>}
+      {data.length > 0 && !loading && (
+        <ul>
+          {data.map(({ id, title }: any) => (
+            <li key={id}>{title}</li>
+          ))}
+        </ul>
+      )}
+    </Card>
   );
 };
