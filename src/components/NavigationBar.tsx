@@ -37,7 +37,6 @@ const cards = [
   { title: "takeEvery vs. takeLatest", page: "/examples/every-latest" },
   { title: "takeLeading", page: "/examples/take-leading" },
   { title: "fork", page: "/examples/fork" },
-  { title: "cancel (should be part of fork)", page: "/examples/cancel" },
   { title: "spawn", page: "/examples/spawn" },
   { title: "END action", page: "/examples/end-action" },
   { title: "race vs. all", page: "/examples/race-all" },

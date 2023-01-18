@@ -47,7 +47,6 @@ function* fetchData(resource: "posts" | "users" | string): unknown {
     });
 
     throw new Error("invalid response");
-  } else {
   }
 }
 

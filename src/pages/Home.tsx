@@ -25,9 +25,9 @@ export const Home = () => {
         >
           <h2>Context & purpose</h2>
           <p>
-            In an attempt to get a better grasp of how Redux Saga works and how
-            it can be used, this application acted as a playground, in which
-            different use cases can be explored.
+            In an attempt to get a better grasp of how Redux & Redux Saga work,
+            this application acts as a playground in which different use cases
+            can be explored.
           </p>
         </div>
         <div
@@ -42,7 +42,9 @@ export const Home = () => {
           <p>
             Examples of a basic Redux CRUD functionality (FAQs), as well as
             examples of how different Redux Saga effect creators and combinators
-            work.
+            work. The observations made for each example are based on console
+            outputs, with the Slow 3G setting active in the devtools network
+            tab.
           </p>
         </div>
       </div>

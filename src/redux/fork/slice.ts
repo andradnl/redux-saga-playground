@@ -26,7 +26,7 @@ export const forkSlice = createSlice({
       state.error = action.payload;
       state.success = false;
     },
-    setSuccess: (state: ForksState, action) => {
+    setSuccess: (state: ForksState) => {
       state.loading = false;
       state.success = true;
       state.error = "";

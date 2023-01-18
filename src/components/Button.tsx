@@ -1,13 +1,17 @@
 import * as React from "react";
 
+type Variant = "secondary";
+
 interface ButtonProps {
   onClick: () => void;
   label: string;
+  variant?: Variant;
 }
 
-export const Button: React.FC<ButtonProps> = ({ onClick, label }) => {
+export const Button: React.FC<ButtonProps> = ({ onClick, label, variant }) => {
+  const className = variant ? "secondary-button" : "button";
   return (
-    <button className="button" onClick={onClick}>
+    <button className={className} onClick={onClick}>
       {label}
     </button>
   );

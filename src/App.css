@@ -68,6 +68,21 @@ h6 {
   background-color: var(--color-blue-dark);
 }
 
+.secondary-button {
+  border-radius: 16px;
+  padding: 8px 24px;
+  background-color: var(--color-purple-light);
+  border: none;
+  color: var(--color-grey-light);
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.secondary-button:hover {
+  background-color: var(--color-purple-dark);
+}
+
 .page-container {
   display: flex;
   flex-wrap: wrap;
