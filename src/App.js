@@ -2,10 +2,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.css";
 import { Home } from "./pages/Home";
+import { FAQs } from "./pages/FAQs";
 import { EveryLatestExample } from "./pages/EveryLatestExample";
 import { TakeLeadingExample } from "./pages/TakeLeadingExample";
-import { FAQs } from "./pages/FAQs";
 import { ForkExample } from "./pages/ForkExample";
+import { SpawnExample } from "./pages/SpawnExample";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
     element: <FAQs />,
   },
   { path: "/examples/fork", element: <ForkExample /> },
+  { path: "/examples/spawn", element: <SpawnExample /> },
 ]);
 
 function App() {

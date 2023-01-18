@@ -14,6 +14,10 @@ export async function fetchPost(id: string) {
   );
 }
 
+export async function fetchTodos() {
+  return await fetch(`${API_URL}/todos`).then((response) => response.json());
+}
+
 type Resource = "users" | "posts" | string;
 
 export async function fetchResource(
