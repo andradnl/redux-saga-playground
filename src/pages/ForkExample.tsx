@@ -13,7 +13,9 @@ export const ForkExample = () => {
   return (
     <>
       <NavigationBar />
-      <div className="page-container">
+      <div
+        style={{ display: "flex", flexWrap: "wrap", gap: 16, marginTop: 16 }}
+      >
         <h1>Fork example</h1>
         <div style={{ display: "flex", width: "100%", gap: 16 }}>
           <Button

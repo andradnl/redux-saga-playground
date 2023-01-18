@@ -8,11 +8,50 @@ import { fetchPostsData, selectPosts } from "../redux/posts/slice";
 import { fetchUsersData, selectUsers } from "../redux/users/slice";
 
 export const EveryLatestExample = () => {
+  const [showObservations, setShowObservations] = React.useState(false);
+
   return (
     <>
       <NavigationBar />
       <div className="page-container">
-        <h1>takeEvery vs. takeLatest</h1>
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "space-between",
+            padding: "16px 0",
+          }}
+        >
+          <h1>takeLatest vs. takeEvery</h1>
+          <Button
+            label={`${showObservations ? "Hide" : "Show"} observations`}
+            onClick={() => setShowObservations(!showObservations)}
+          />
+        </div>
+        {showObservations && (
+          <div
+            style={{
+              borderRadius: 8,
+              border: "1px solid lightgrey",
+              width: "100%",
+              padding: 16,
+            }}
+          >
+            <p>
+              When clicking the Fetch button multiple times in rapid succession:
+              <ul>
+                <li>
+                  The UI is populated with user data retrieved by the last
+                  request made with takeLatest
+                </li>
+                <li>
+                  The UI is populated with posts data retrieved by the first
+                  request made with takeEvery
+                </li>
+              </ul>
+            </p>
+          </div>
+        )}
         <div style={{ display: "flex", width: "100%", gap: 16 }}>
           <UsersCard />
           <PostsCard />
