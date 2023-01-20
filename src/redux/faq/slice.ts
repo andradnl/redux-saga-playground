@@ -39,20 +39,6 @@ export const faqSlice = createSlice({
       ...state,
       faqs: state.faqs.concat(action.payload),
     }),
-    updateFaq: (state, action) => {
-      state.faqs.reduce((acc: FAQ[], value: FAQ) => {
-        if (value.id !== action.payload.id) {
-          acc.push(value);
-        } else {
-          acc.push({
-            id: action.payload.id,
-            question: action.payload.question ?? value.question,
-            answer: action.payload.answer ?? value.answer,
-          });
-        }
-        return acc;
-      }, []);
-    },
     deleteFaq: (state, action) => ({
       ...state,
       faqs: state.faqs.filter((faq) => {
@@ -62,6 +48,6 @@ export const faqSlice = createSlice({
   },
 });
 
-export const { addFaq, updateFaq, deleteFaq } = faqSlice.actions;
+export const { addFaq, deleteFaq } = faqSlice.actions;
 
 export const selectFaq = (state: any) => state.faq; 
