@@ -7,6 +7,7 @@ import { postsSlice } from "./posts/slice";
 import { faqSlice } from "./faq/slice";
 import { forkSlice } from "./fork/slice";
 import { spawnSlice } from "./spawn/slice";
+import { raceAllSlice } from "./raceAll/slice";
 
 const rootReducer = combineReducers({
   users: userSlice.reducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   faq: faqSlice.reducer,
   fork: forkSlice.reducer,
   spawn: spawnSlice.reducer,
+  raceAll: raceAllSlice.reducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();

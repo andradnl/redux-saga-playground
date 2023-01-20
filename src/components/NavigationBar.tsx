@@ -38,7 +38,6 @@ const cards = [
   { title: "takeLeading", page: "/examples/take-leading" },
   { title: "fork", page: "/examples/fork" },
   { title: "spawn", page: "/examples/spawn" },
-  { title: "END action", page: "/examples/end-action" },
   { title: "race vs. all", page: "/examples/race-all" },
 ];
 

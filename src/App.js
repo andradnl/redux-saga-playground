@@ -7,6 +7,7 @@ import { EveryLatestExample } from "./pages/EveryLatestExample";
 import { TakeLeadingExample } from "./pages/TakeLeadingExample";
 import { ForkExample } from "./pages/ForkExample";
 import { SpawnExample } from "./pages/SpawnExample";
+import { RaceAllExample } from "./pages/RaceAllExample";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
   },
   { path: "/examples/fork", element: <ForkExample /> },
   { path: "/examples/spawn", element: <SpawnExample /> },
+  { path: "/examples/race-all", element: <RaceAllExample /> },
 ]);
 
 function App() {
