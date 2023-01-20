@@ -1,4 +1,4 @@
-import { call, race } from "redux-saga/effects";
+import { all, call, race } from "redux-saga/effects";
 
 import { fetchUserData, fetchTodos, fetchResource } from "../../api/requests";
 
@@ -19,4 +19,8 @@ function* todos(): unknown {
 
 export function* raceSaga(): unknown {
   yield race([call(todos), call(users), call(posts)]);
+}
+
+export function* allSaga(): unknown {
+  yield all([call(todos), call(users), call(posts)]);
 }

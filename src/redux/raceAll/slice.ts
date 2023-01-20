@@ -6,8 +6,9 @@ export const raceAllSlice = createSlice({
   name: "raceAll",
   initialState,
   reducers: {
-    fetch: () => {},
+    fetchRace: () => {},
+    fetchAll: () => {},
   },
 });
 
-export const { fetch } = raceAllSlice.actions;
+export const { fetchRace, fetchAll } = raceAllSlice.actions;

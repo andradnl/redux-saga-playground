@@ -14,7 +14,7 @@ export const EveryLatestExample = () => {
     <>
       <NavigationBar />
       <div className="page-container">
-        <div className="title-section">
+        <div className="title-section" style={{ margin: "16px 0" }}>
           <h1>takeLatest vs. takeEvery</h1>
           <Button
             label={`${showObservations ? "Hide" : "Show"} observations`}
